@@ -2,7 +2,7 @@ const text = [
   "Student",
   "Learner",
   "Dreamer",
-  "Future Doctor"
+  "Tech Enthusiast"
 ];
 
 let i = 0;
