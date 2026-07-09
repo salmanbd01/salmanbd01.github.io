@@ -30,7 +30,12 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,.4);
     margin-bottom:25px;
 }
+transition:.4s;
+}
 
+.profile:hover{
+    transform:scale(1.08) rotate(2deg);
+}
 h1{
     font-size:60px;
     margin-bottom:10px;
@@ -73,4 +78,52 @@ section{
     background:rgba(255,255,255,.08);
     backdrop-filter:blur(12px);
     border-radius:20px;
+}
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:rgba(15,23,42,.55);
+    backdrop-filter:blur(15px);
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.card{
+    margin-top:25px;
+    background:rgba(255,255,255,.08);
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+html{
+    scroll-behavior:smooth;
 }
