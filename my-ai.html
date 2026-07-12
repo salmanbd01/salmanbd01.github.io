@@ -5,13 +5,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AI | Salman Rahman</title>
+
+    <link rel="stylesheet" href="my-ai.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <h1>🤖 My AI</h1>
+<div class="container">
 
-    <p>Welcome to My AI Assistant.</p>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            🤖 <span>My AI</span>
+        </div>
+
+        <button id="newChat">
+            + New Chat
+        </button>
+
+        <div class="history">
+
+            <h3>Recent Chats</h3>
+
+            <ul>
+                <li>Introduction</li>
+                <li>Science</li>
+                <li>Programming</li>
+                <li>Mathematics</li>
+            </ul>
+
+        </div>
+
+        <div class="developer">
+
+            <p>Developed By</p>
+
+            <h4>Salman Rahman</h4>
+
+        </div>
+
+    </aside>
+
+    <!-- Main Chat -->
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <h2>My AI Assistant</h2>
+
+        </div>
+
+        <div id="chatBox" class="chatBox">
+
+            <div class="ai-message">
+
+                <div class="avatar">
+                    🤖
+                </div>
+
+                <div class="text">
+
+                    <h4>My AI</h4>
+
+                    <p>
+                        Hello Salman 👋 <br><br>
+
+                        Welcome to your AI Assistant.
+
+                        Ask me anything.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="inputArea">
+
+            <textarea
+            id="prompt"
+            placeholder="Message My AI..."
+            rows="1"></textarea>
+
+            <button id="sendBtn">
+
+                Send
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="my-ai.js"></script>
 
 </body>
 
