@@ -1,4 +1,4 @@
-const API_KEY = "AQ.Ab8RN6IT3TcHjir-Cnd658zdxY4RdK2pRqMzXAxkJWBmdiV2bw";
+const API_KEY = "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";
 
 const chatBox = document.getElementById("chatBox");
 const promptInput = document.getElementById("prompt");
@@ -20,45 +20,32 @@ async function sendMessage() {
     if (!message) return;
 
     chatBox.innerHTML += `
-        <div class="ai-message" style="justify-content:flex-end">
-            <div class="text">
-                <h4>You</h4>
-                <p>${message}</p>
-            </div>
+    <div class="ai-message">
+        <div class="text">
+            <h4>You</h4>
+            <p>${message}</p>
         </div>
+    </div>
     `;
 
     promptInput.value = "";
 
-    chatBox.innerHTML += `
-        <div class="ai-message" id="loading">
-            <div class="avatar">🤖</div>
-            <div class="text">
-                <h4>My AI</h4>
-                <p>Thinking...</p>
-            </div>
-        </div>
-    `;
-
-    chatBox.scrollTop = chatBox.scrollHeight;
-
     try {
 
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
+            "https://api.openai.com/v1/chat/completions",
             {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
                 },
                 body: JSON.stringify({
-                    contents: [
+                    model: "gpt-4o-mini",
+                    messages: [
                         {
-                            parts: [
-                                {
-                                    text: message
-                                }
-                            ]
+                            role: "user",
+                            content: message
                         }
                     ]
                 })
@@ -67,38 +54,31 @@ async function sendMessage() {
 
         const data = await response.json();
 
-        document.getElementById("loading").remove();
-
         const reply =
-            data.candidates?.[0]?.content?.parts?.[0]?.text ||
-            "No response.";
+        data.choices?.[0]?.message?.content ||
+        "No response";
 
         chatBox.innerHTML += `
-            <div class="ai-message">
-                <div class="avatar">🤖</div>
-                <div class="text">
-                    <h4>My AI</h4>
-                    <p>${reply}</p>
-                </div>
+        <div class="ai-message">
+            <div class="avatar">🤖</div>
+            <div class="text">
+                <h4>My AI</h4>
+                <p>${reply}</p>
             </div>
+        </div>
         `;
 
-    } catch (err) {
-
-        document.getElementById("loading").remove();
+    } catch(error) {
 
         chatBox.innerHTML += `
-            <div class="ai-message">
-                <div class="avatar">❌</div>
-                <div class="text">
-                    <h4>Error</h4>
-                    <p>Failed to connect Gemini API.</p>
-                </div>
+        <div class="ai-message">
+            <div class="text">
+                <h4>Error</h4>
+                <p>AI connection failed.</p>
             </div>
+        </div>
         `;
 
-        console.error(err);
+        console.log(error);
     }
-
-    chatBox.scrollTop = chatBox.scrollHeight;
 }
