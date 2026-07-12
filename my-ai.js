@@ -60,5 +60,18 @@ async function sendMessage(){
 
     } catch(error){
         console.log(error);
+        const newChatBtn = document.getElementById("newChat");
+
+newChatBtn.addEventListener("click", () => {
+    chatBox.innerHTML = `
+    <div class="ai-message">
+        <div class="avatar">🤖</div>
+        <div class="text">
+            <h4>My AI</h4>
+            <p>Hello Salman 👋<br><br>New chat started. Ask me anything.</p>
+        </div>
+    </div>
+    `;
+});
     }
 }
