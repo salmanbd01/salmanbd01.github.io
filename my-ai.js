@@ -1,4 +1,4 @@
-const API_KEY = "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";
+const API_KEY = "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";
 
 const chatBox = document.getElementById("chatBox");
 const promptInput = document.getElementById("prompt");
